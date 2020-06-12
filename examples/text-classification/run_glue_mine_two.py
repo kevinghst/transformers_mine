@@ -25,6 +25,8 @@ from typing import Callable, Dict, Optional
 
 import numpy as np
 
+from transformers import BertTokenizer, RobertaTokenizer, RobertaConfig, RobertaForSequenceClassification
+
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction, GlueDataset
 from transformers import GlueDataTrainingArguments as DataTrainingArguments
 from transformers import (
@@ -115,22 +117,32 @@ except KeyError:
 # The .from_pretrained methods guarantee that only one local process can concurrently
 # download model & vocab.
 
-config = AutoConfig.from_pretrained(
-    model_args.config_name if model_args.config_name else model_args.model_name_or_path,
-    num_labels=num_labels,
-    finetuning_task=data_args.task_name,
-    cache_dir=model_args.cache_dir,
-)
-tokenizer = AutoTokenizer.from_pretrained(
-    model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
-    cache_dir=model_args.cache_dir,
-)
-model = AutoModelForSequenceClassification.from_pretrained(
-    model_args.model_name_or_path,
-    from_tf=bool(".ckpt" in model_args.model_name_or_path),
-    config=config,
-    cache_dir=model_args.cache_dir,
-)
+#config = AutoConfig.from_pretrained(
+#    model_args.config_name if model_args.config_name else model_args.model_name_or_path,
+#    num_labels=num_labels,
+#    finetuning_task=data_args.task_name,
+#    cache_dir=model_args.cache_dir,
+#)
+#tokenizer = AutoTokenizer.from_pretrained(
+#    model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+#    cache_dir=model_args.cache_dir,
+#)
+#model = AutoModelForSequenceClassification.from_pretrained(
+#    model_args.model_name_or_path,
+#    from_tf=bool(".ckpt" in model_args.model_name_or_path),
+#    config=config,
+#    cache_dir=model_args.cache_dir,
+#)
+
+config = RobertaConfig.from_pretrained('roberta-base')
+config.num_labels = 2
+model = RobertaForSequenceClassification(config)
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+
+
+
+
 # Get datasets
 train_dataset = (
     GlueDataset(data_args, tokenizer=tokenizer, cache_dir=model_args.cache_dir) if training_args.do_train else None
