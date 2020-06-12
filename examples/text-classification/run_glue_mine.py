@@ -10,6 +10,8 @@ from transformers import (
     set_seed,
 )
 
+import torch
+
 import dataclasses
 import logging
 import os
