@@ -522,7 +522,7 @@ class Trainer:
                         # Save model checkpoint
                         output_dir = os.path.join(self.args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{self.global_step}")
 
-                        self.save_model(output_dir)
+                        #self.save_model(output_dir)
 
                         if self.is_world_master():
                             self._rotate_checkpoints()
