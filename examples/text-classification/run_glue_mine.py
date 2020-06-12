@@ -20,6 +20,40 @@ data_args = {
     "overwrite_cache": False
 }
 
+training_args = {
+    'output_dir':'/tmp/CoLA/', 
+    'overwrite_output_dir': True, 
+    'do_train': True, 
+    'do_eval': True, 
+    'do_predict': False, 
+    'evaluate_during_training': False, 
+    'per_device_train_batch_size': 8, 
+    'per_device_eval_batch_size': 8, 
+    'per_gpu_train_batch_size': 32, 
+    'per_gpu_eval_batch_size': None, 
+    'gradient_accumulation_steps': 1, 
+    'learning_rate': 3e-05, 
+    'weight_decay': 0.0, 
+    'adam_epsilon': 1e-08, 
+    'max_grad_norm': 1.0, 
+    'num_train_epochs': 3.0, 
+    'max_steps': -1, 
+    'warmup_steps': 0, 
+    'logging_dir': 'runs/Jun12_11-44-41_gpu-68', 
+    'logging_first_step': False, 
+    'logging_steps': 500, 
+    'save_steps': 500, 
+    'save_total_limit': None, 
+    'no_cuda': False, 
+    'seed': 42, 
+    'fp16': False, 
+    'fp16_opt_level': 'O1', 
+    'local_rank': -1, 
+    'tpu_num_cores': None, 
+    'tpu_metrics_debug': False, 
+    'dataloader_drop_last': False
+}
+
 model_name_or_path = 'roberta-base'
 output_dir = '/tmp/CoLA/'
 
@@ -30,6 +64,7 @@ class AttributeDict(dict):
     __setattr__ = dict.__setitem__
 
 data_args = AttributeDict(data_args)
+training_args = AttributeDict(training_args)
 
 train_dataset = (
     GlueDataset(data_args, tokenizer=tokenizer)
