@@ -137,8 +137,10 @@ tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 #    cache_dir=model_args.cache_dir,
 #)
 
-model = RobertaForSequenceClassification(config=config)
-
+model = RobertaForSequenceClassification.from_pretrained(
+    "roberta-base",
+    config=config,
+)
 
 
 # Get datasets
