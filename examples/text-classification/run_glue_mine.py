@@ -28,7 +28,10 @@ data_args = {
     "overwrite_cache": False
 }
 
+device = torch.device("cuda")
+
 training_args = {
+    'device': device,
     'output_dir':'/tmp/CoLA/', 
     'overwrite_output_dir': True, 
     'do_train': True, 
@@ -141,3 +144,4 @@ for eval_dataset in eval_datasets:
 #exit = "exit"
 
 #pdb.set_trace()
+
