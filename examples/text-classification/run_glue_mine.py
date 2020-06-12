@@ -56,7 +56,7 @@ training_args = {
     'weight_decay': 0.0, 
     'adam_epsilon': 1e-08, 
     'max_grad_norm': 1.0, 
-    'num_train_epochs': 1.0, 
+    'num_train_epochs': 3.0, 
     'max_steps': -1, 
     'warmup_steps': 0, 
     'logging_dir': 'runs/Jun12_11-44-41_gpu-68', 
