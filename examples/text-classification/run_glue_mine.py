@@ -56,7 +56,7 @@ training_args = {
     'weight_decay': 0.0, 
     'adam_epsilon': 1e-08, 
     'max_grad_norm': 1.0, 
-    'num_train_epochs': 3.0, 
+    'num_train_epochs': 1.0, 
     'max_steps': -1, 
     'warmup_steps': 0, 
     'logging_dir': 'runs/Jun12_11-44-41_gpu-68', 
@@ -93,6 +93,8 @@ eval_dataset = (
     GlueDataset(data_args, tokenizer=tokenizer, mode="dev")
 )
 test_dataset = None
+
+output_mode = glue_output_modes[data_args.task_name]
 
 config = RobertaConfig.from_pretrained('roberta-base')
 config.num_labels = 2
