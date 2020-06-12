@@ -1,6 +1,6 @@
 from transformers import BertTokenizer, RobertaTokenizer
 
-from transformers import GlueDataset
+from transformers import GlueDataset, EvalPrediction
 
 import dataclasses
 import logging
