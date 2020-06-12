@@ -1,4 +1,4 @@
-from transformers import BertTokenizer, RobertaTokenizer
+from transformers import BertTokenizer, RobertaTokenizer, RobertaConfig, RobertaForSequenceClassification
 
 from transformers import GlueDataset, EvalPrediction
 
@@ -82,6 +82,9 @@ eval_dataset = (
 )
 test_dataset = None
 
+config = RobertaConfig.from_pretrained('roberta-base')
+config.num_labels = 2
+model = RobertaForSequenceClassification(config)
 
 def build_compute_metrics_fn(task_name: str) -> Callable[[EvalPrediction], Dict]:
     def compute_metrics_fn(p: EvalPrediction):
