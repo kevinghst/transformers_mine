@@ -157,6 +157,8 @@ def main():
 
         return compute_metrics_fn
 
+    pdb.set_trace()
+
     # Initialize our Trainer
     trainer = Trainer(
         model=model,
