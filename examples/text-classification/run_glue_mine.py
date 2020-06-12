@@ -117,7 +117,6 @@ trainer = Trainer(
 trainer.train(
     model_path=model_name_or_path if os.path.isdir(model_name_or_path) else None
 )
-trainer.save_model()
 
 # Evaluation
 eval_results = {}
