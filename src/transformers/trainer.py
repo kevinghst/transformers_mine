@@ -191,7 +191,6 @@ class Trainer:
         """
         self.model = model.to(args.device)
         self.args = args
-        pdb.set_trace()
 
         if data_collator is not None:
             self.data_collator = data_collator
