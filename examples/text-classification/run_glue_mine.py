@@ -1,6 +1,7 @@
 from transformers import BertTokenizer, RobertaTokenizer
 
 from transformers import GlueDataset
+
 import pdb
 
 data_args = {
@@ -21,6 +22,10 @@ data_args = AttributeDict(data_args)
 train_dataset = (
     GlueDataset(data_args, tokenizer=tokenizer)
 )
+eval_dataset = (
+    GlueDataset(data_args, tokenizer=tokenizer, mode="dev")
+)
+test_dataset = None
 
 pdb.set_trace()
 
