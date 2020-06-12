@@ -34,12 +34,15 @@ device = torch.device("cuda")
 
 training_args = {
     'device': device,
+    'n_gpu': 1,
     'output_dir':'/tmp/CoLA/', 
     'overwrite_output_dir': True, 
     'do_train': True, 
     'do_eval': True, 
     'do_predict': False, 
     'evaluate_during_training': False, 
+    'train_batch_size': 32,
+    'eval_batch_size': 8,
     'per_device_train_batch_size': 8, 
     'per_device_eval_batch_size': 8, 
     'per_gpu_train_batch_size': 32, 
